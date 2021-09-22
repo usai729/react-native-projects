@@ -16,14 +16,14 @@ Creating database<br>
 Table for users. This can be modified to have username or any other unique identification. Im my case I kept just the key.
 ```
 CREATE TABLE users (
-	userID INTEGER PRIMARY KEY AUTO_INCREMENT,
+    userID INTEGER PRIMARY KEY AUTO_INCREMENT,
     userKey INTEGER NOT NULL
 );
 ```
 Create table for todos. Use <b>relUser</b> as *FOREIGN KEY*
 ```
 CREATE TABLE todos (
-	pID INTEGER PRIMARY KEY AUTO_INCREMENT,
+    pID INTEGER PRIMARY KEY AUTO_INCREMENT,
     relUser INTEGER,
     todoTITLE VARCHAR(200) NOT NULL,
     todoDesc TEXT,
