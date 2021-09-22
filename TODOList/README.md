@@ -20,7 +20,7 @@ CREATE TABLE users (
     userKey INTEGER NOT NULL
 );
 ```
-Create table for todos. Use **relUser** as *FOREIGN KEY*
+Create table for todos. Use <b>relUser</b> as *FOREIGN KEY*
 ```
 CREATE TABLE todos (
 	pID INTEGER PRIMARY KEY AUTO_INCREMENT,
