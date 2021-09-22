@@ -13,13 +13,15 @@ import { Icon } from "react-native-elements";
 
 import App from "../App";
 
+const url = "";
+
 export default function LogIn({ navigation, route }) {
   const [key, setKey] = React.useState("");
   const [activity, setActivity] = React.useState(false);
 
   const submit = () => {
     setActivity(true);
-    fetch("https://185e-49-205-120-158.ngrok.io/login.php", {
+    fetch(url + "/login.php", {
       mode: "cors",
       method: "POST",
       body: JSON.stringify({ key: key }),
