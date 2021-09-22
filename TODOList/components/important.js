@@ -13,6 +13,8 @@ import {
 import { Icon } from "react-native-elements";
 import { ScrollView } from "react-native-gesture-handler";
 
+const url = "";
+
 export default function Imp() {
   const [data, setData] = React.useState([]);
   //const [dataSimp, setDataSimp] = React.useState();
@@ -20,7 +22,7 @@ export default function Imp() {
 
   const getData = () => {
     setState(true);
-    fetch("https://185e-49-205-120-158.ngrok.io/fimp.php", {
+    fetch(url + "/fimp.php", {
       method: "GET",
     })
       .then((response) => {
