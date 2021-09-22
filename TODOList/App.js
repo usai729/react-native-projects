@@ -17,11 +17,13 @@ import SignUp from "./components/signup";
 const Tab = createBottomTabNavigator();
 const Stack = createStackNavigator();
 
+const url = "";
+
 export default function App() {
   const [signedin, setSignedin] = React.useState();
 
   React.useEffect(() => {
-    fetch("https://185e-49-205-120-158.ngrok.io/state.php", {
+    fetch(url + "/state.php", {
       method: "GET",
       mode: "cors",
     })
