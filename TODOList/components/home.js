@@ -17,10 +17,12 @@ export default function Home() {
   const [data, setData] = React.useState([]);
   //const [dataSimp, setDataSimp] = React.useState();
   const [state, setState] = React.useState(false);
+  
+  const url = "";
 
   const getData = () => {
     setState(true);
-    fetch("https://185e-49-205-120-158.ngrok.io/fetch.php", {
+    fetch(url + "/fetch.php", {
       method: "GET",
     })
       .then((response) => {
@@ -76,7 +78,7 @@ export default function Home() {
             key={item.id}
             onPress={() => {
               setState(true);
-              fetch("https://185e-49-205-120-158.ngrok.io/delete.php", {
+              fetch(url + "/delete.php", {
                 mode: "cors",
                 method: "POST",
                 body: JSON.stringify({ itemID: item.id }),
