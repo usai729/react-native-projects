@@ -8,7 +8,7 @@ Modules to be installed<br>
 
 Using *PHP on the backend* and *MySQL for database*
 
-Creating database
+Creating database<br>
 `CREATE DATABASE TODOlist;`
 
 `USE TODOlist;`
