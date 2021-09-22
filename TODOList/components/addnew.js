@@ -25,11 +25,11 @@ export default function AddNew() {
 
   const [activity, setActivity] = React.useState(false);
 
-  const url = "https://185e-49-205-120-158.ngrok.io";
+  const url = "";
 
   const randomFact = () => {
     fetch(
-      "https://api.nasa.gov/planetary/apod?api_key=sYmaUkJGPJPtbSidM9iLTypdzrkMAJReu0Jktdl2",
+      "",
       {
         method: "GET",
       }
