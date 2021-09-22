@@ -13,7 +13,7 @@ Creating database<br>
 
 `USE TODOlist;`
 
-Table for users. This can be modified to have username or any other unique identification. Im my case I kept just the key.
+Table for users. This can be modified to have username or any other unique identification. In my case I kept just the key.
 ```
 CREATE TABLE users (
     userID INTEGER PRIMARY KEY AUTO_INCREMENT,
