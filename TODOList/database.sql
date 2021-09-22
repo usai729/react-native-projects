@@ -1,0 +1,18 @@
+CREATE DATABASE TODOlist;
+
+USE TODOlist;
+
+CREATE TABLE users (
+	userID INTEGER PRIMARY KEY AUTO_INCREMENT,
+    userKey INTEGER NOT NULL
+);
+
+CREATE TABLE todos (
+	pID INTEGER PRIMARY KEY AUTO_INCREMENT,
+    relUser INTEGER,
+    todoTITLE VARCHAR(200) NOT NULL,
+    todoDesc TEXT,
+    addedTime DATE,
+    important BOOLEAN NOT NULL,
+    FOREIGN KEY(relUser) REFERENCES users(userID)
+);
