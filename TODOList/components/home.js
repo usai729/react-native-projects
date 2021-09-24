@@ -34,6 +34,7 @@ export default function Home() {
   };
 
   React.useEffect(getData, []);
+
   var star = <Icon name="star" color="#ffdf00" />;
   var book = <Icon name="book" />;
 
