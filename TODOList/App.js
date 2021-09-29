@@ -13,17 +13,65 @@ import Info from "./components/info";
 import Imp from "./components/important";
 import LogIn from "./components/login";
 import SignUp from "./components/signup";
+import Edit from "./components/edit";
 
 const Tab = createBottomTabNavigator();
 const Stack = createStackNavigator();
 
-const url = "";
+const stack_1 = () => {
+  return (
+    <Tab.Navigator
+      screenOptions={{ headerShown: false, tabBarHideOnKeyboard: true }}
+    >
+      <Tab.Screen
+        name="Home"
+        component={Home}
+        options={{
+          tabBarIcon: () => {
+            return <Icon name="home" />;
+          },
+          tabBarShowLabel: false,
+        }}
+      />
+      <Tab.Screen
+        name="New"
+        component={AddNew}
+        options={{
+          tabBarIcon: () => {
+            return <Icon name="create" />;
+          },
+          tabBarShowLabel: false,
+        }}
+      />
+      <Tab.Screen
+        name="Imp"
+        component={Imp}
+        options={{
+          tabBarIcon: () => {
+            return <Icon name="star" />;
+          },
+          tabBarShowLabel: false,
+        }}
+      />
+      <Tab.Screen
+        name="Info"
+        component={Info}
+        options={{
+          tabBarIcon: () => {
+            return <Icon name="info" />;
+          },
+          tabBarShowLabel: false,
+        }}
+      />
+    </Tab.Navigator>
+  );
+};
 
 export default function App() {
-  const [signedin, setSignedin] = React.useState();
+  const [signedin, setSignedin] = React.useState(true);
 
   React.useEffect(() => {
-    fetch(url + "/state.php", {
+    fetch("https://c502-49-205-120-25.ngrok.io/state.php", {
       method: "GET",
       mode: "cors",
     })
@@ -41,61 +89,14 @@ export default function App() {
 
   return signedin ? (
     <NavigationContainer>
-      <Tab.Navigator
-        screenOptions={{
-          headerShown: false,
-          tabBarActiveTintColor: "#FFF",
-          tabBarStyle: {
-            borderWidth: 0,
-            margin:
-              Dimensions.get("window").width -
-              (97.5 * Dimensions.get("window").width) / 100,
-            borderRadius: 20,
-          },
-          tabBarHideOnKeyboard: true,
-        }}
-      >
-        <Tab.Screen
-          name="Home"
-          component={Home}
-          options={{
-            tabBarIcon: () => {
-              return <Icon name="home" />;
-            },
-            tabBarShowLabel: false,
-          }}
+      <Stack.Navigator>
+        <Stack.Screen
+          name="tabs1"
+          component={stack_1}
+          options={{ headerShown: false }}
         />
-        <Tab.Screen
-          name="New"
-          component={AddNew}
-          options={{
-            tabBarIcon: () => {
-              return <Icon name="create" />;
-            },
-            tabBarShowLabel: false,
-          }}
-        />
-        <Tab.Screen
-          name="Imp"
-          component={Imp}
-          options={{
-            tabBarIcon: () => {
-              return <Icon name="star" />;
-            },
-            tabBarShowLabel: false,
-          }}
-        />
-        <Tab.Screen
-          name="Info"
-          component={Info}
-          options={{
-            tabBarIcon: () => {
-              return <Icon name="info" />;
-            },
-            tabBarShowLabel: false,
-          }}
-        />
-      </Tab.Navigator>
+        <Stack.Screen name="Edit To-Do" component={Edit} />
+      </Stack.Navigator>
     </NavigationContainer>
   ) : (
     <NavigationContainer>
