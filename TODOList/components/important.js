@@ -3,6 +3,7 @@ import {
   View,
   Text,
   StyleSheet,
+  FlatList,
   StatusBar,
   Touchable,
   TouchableHighlight,
@@ -12,16 +13,14 @@ import {
 import { Icon } from "react-native-elements";
 import { ScrollView } from "react-native-gesture-handler";
 
-const url = "";
-
-export default function Imp() {
+export default function Imp({ navigation }) {
   const [data, setData] = React.useState([]);
   //const [dataSimp, setDataSimp] = React.useState();
   const [state, setState] = React.useState(false);
 
   const getData = () => {
     setState(true);
-    fetch(url + "/fimp.php", {
+    fetch("url/fimp.php", {
       method: "GET",
     })
       .then((response) => {
@@ -70,6 +69,34 @@ export default function Imp() {
         >
           {item.date}
         </Text>
+        <TouchableHighlight
+          onPress={() => {
+            navigation.navigate("Edit To-Do", {
+              itemID: item.id,
+              itemTitle: item.title,
+              itemDesc: item.desc,
+            });
+          }}
+          style={{
+            flex: 1,
+            alignItems: "center",
+            borderColor: "green",
+            borderRadius: 3,
+            borderWidth: 1,
+            padding: 3,
+            margin: 4,
+          }}
+        >
+          <Text
+            style={{
+              fontSize: 12,
+              fontWeight: "bold",
+              color: "green",
+            }}
+          >
+            EDIT
+          </Text>
+        </TouchableHighlight>
       </View>
     );
   });
