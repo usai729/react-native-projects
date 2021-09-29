@@ -25,7 +25,7 @@ export default function Edit({ navigation, route }) {
 
   const edit = () => {
     setActivity(true);
-    fetch("https://c502-49-205-120-25.ngrok.io/edit.php", {
+    fetch("url/edit.php", {
       mode: "cors",
       method: "POST",
       body: JSON.stringify({
