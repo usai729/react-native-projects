@@ -1,4 +1,5 @@
 import React from "react";
+import { render } from "react-dom";
 import {
   View,
   Text,
@@ -12,16 +13,16 @@ import {
 import { Icon } from "react-native-elements";
 import { ScrollView } from "react-native-gesture-handler";
 
-export default function Home() {
+import App from "../App";
+
+export default function Home({ navigation }) {
   const [data, setData] = React.useState([]);
   //const [dataSimp, setDataSimp] = React.useState();
   const [state, setState] = React.useState(false);
-  
-  const url = "";
 
   const getData = () => {
     setState(true);
-    fetch(url + "/fetch.php", {
+    fetch("url/fetch.php", {
       method: "GET",
     })
       .then((response) => {
@@ -34,7 +35,6 @@ export default function Home() {
   };
 
   React.useEffect(getData, []);
-
   var star = <Icon name="star" color="#ffdf00" />;
   var book = <Icon name="book" />;
 
@@ -74,11 +74,13 @@ export default function Home() {
           >
             {item.date}
           </Text>
+        </View>
+        <View style={{ flexDirection: "row" }}>
           <TouchableHighlight
             key={item.id}
             onPress={() => {
               setState(true);
-              fetch(url + "/delete.php", {
+              fetch("url/delete.php", {
                 mode: "cors",
                 method: "POST",
                 body: JSON.stringify({ itemID: item.id }),
@@ -99,17 +101,52 @@ export default function Home() {
                   setState(false);
                 });
             }}
+            style={{
+              flex: 1,
+              alignItems: "center",
+              borderColor: "#C70000",
+              borderWidth: 1,
+              borderRadius: 3,
+              padding: 3,
+              margin: 4,
+            }}
           >
             <Text
               style={{
                 fontSize: 12,
                 fontWeight: "bold",
                 color: "#C70000",
-                marginTop: 5,
-                flex: 1,
               }}
             >
               DELETE
+            </Text>
+          </TouchableHighlight>
+          <TouchableHighlight
+            onPress={() => {
+              navigation.navigate("Edit To-Do", {
+                itemID: item.id,
+                itemTitle: item.title,
+                itemDesc: item.desc,
+              });
+            }}
+            style={{
+              flex: 1,
+              alignItems: "center",
+              borderColor: "green",
+              borderRadius: 3,
+              borderWidth: 1,
+              padding: 3,
+              margin: 4,
+            }}
+          >
+            <Text
+              style={{
+                fontSize: 12,
+                fontWeight: "bold",
+                color: "green",
+              }}
+            >
+              EDIT
             </Text>
           </TouchableHighlight>
         </View>
