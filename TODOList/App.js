@@ -71,7 +71,7 @@ export default function App() {
   const [signedin, setSignedin] = React.useState(true);
 
   React.useEffect(() => {
-    fetch("https://c502-49-205-120-25.ngrok.io/state.php", {
+    fetch("url/state.php", {
       method: "GET",
       mode: "cors",
     })
