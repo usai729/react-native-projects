@@ -35,3 +35,4 @@ CREATE TABLE todos (
 
 
 `const url = "***LINK TO PHP SERVER (LOCALHOST:800/TUNNEL)***"`
+Start a php server `php -S localhost:8000`
